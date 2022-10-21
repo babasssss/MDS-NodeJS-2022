@@ -2,36 +2,24 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+// Connection à la base de données
 const connect = require('./data/helpers/db')
 connect()
 
-const User = require('./data/models/User')
+// Parmétrage de Express pour le body et le JSON
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 
 // On importe le logger
 const logger = require('./middlewares/logger')
 // On dit à Express d'utiliser le logger en tant que middleware
 app.use(logger)
 
+// On branche notre route users sur le fichier correspondant, le nom index.js est utilisé par défaut.
+app.use('/users', require('./routes/users'))
+
 app.get('/', (req, res) => {
   res.send('Hello world Express !')
-})
-
-app.post('/user', (req, res) => {
-
-  const user = new User({
-    firstName: 'Michel',
-    lastName: 'Toto',
-    phone: '010203040506',
-    email: 'michel.toto@mail.com',
-    password: 'SuperPassword44'
-  })
-
-  user.save()
-  .then((result) => console.log(result))
-  .catch((error) => console.error(error))
-
-  res.send()
-
 })
 
 app.listen(port, () => {
