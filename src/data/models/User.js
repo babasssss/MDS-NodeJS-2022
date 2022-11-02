@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 
 const userSchema = new Schema({
   firstName: {
-    type: String,
+    type: String
   },
   lastName: {
     type: String
@@ -23,7 +23,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   }
-}, {timestamps: true})
+}, { timestamps: true })
 
 // Remplace le mot de passe de l'utilisateur par un équivalent crypté avant l'enregistrement dans la BDD
 userSchema.pre('save', function (next) {

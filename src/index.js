@@ -7,7 +7,7 @@ const connect = require('./data/helpers/db')
 connect()
 
 // Parmétrage de Express pour le body et le JSON
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // On importe le logger
