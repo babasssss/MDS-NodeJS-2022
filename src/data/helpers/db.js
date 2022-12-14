@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const connect = () => {
-  mongoose.connect('mongodb+srv://mydigitalschool:mydigitalschool@cluster0.xvks1om.mongodb.net/NodeJS?retryWrites=true&w=majority')
+  mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`)
     .then(() => {
       console.log('Database connected')
     })

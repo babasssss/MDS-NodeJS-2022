@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const app = express()
 const port = 3000
@@ -17,6 +19,8 @@ app.use(logger)
 
 // On branche notre route users sur le fichier correspondant, le nom index.js est utilisé par défaut.
 app.use('/users', require('./routes/users'))
+app.use('/auth', require('./routes/auth'))
+app.use('/protected', require('./routes/protected'))
 
 app.get('/', (req, res) => {
   res.send('Hello world Express !')
