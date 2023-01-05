@@ -21,6 +21,7 @@ app.use(logger)
 app.use('/users', require('./routes/users'))
 app.use('/auth', require('./routes/auth'))
 app.use('/protected', require('./routes/protected'))
+app.use('/files/upload', require('./routes/files/upload'))
 
 app.get('/', (req, res) => {
   res.send('Hello world Express !')
